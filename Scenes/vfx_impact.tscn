@@ -1,0 +1,181 @@
+[gd_scene load_steps=27 format=3 uid="uid://d1ceuge37ite"]
+
+[ext_resource type="Script" uid="uid://dsu8nwqnmthwx" path="res://Scripts/vfx_attack.gd" id="1_x4grp"]
+[ext_resource type="Texture2D" uid="uid://crv6go6rj70wo" path="res://Textures/Flash.png" id="1_yhdc5"]
+[ext_resource type="Texture2D" uid="uid://lyam3tctdn7w" path="res://Textures/Flare.png" id="2_xtguu"]
+[ext_resource type="Texture2D" uid="uid://xvnqu0h564ao" path="res://Textures/Shockwave.png" id="3_uqkyf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uqkyf"]
+transparency = 1
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_yhdc5")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_xtguu"]
+_data = [Vector2(0.0016129, 1), 0.0, -1.00162, 0, 1, Vector2(1, 0), -1.00162, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_uqkyf"]
+curve = SubResource("Curve_xtguu")
+
+[sub_resource type="Curve" id="Curve_lwtfs"]
+_data = [Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="CurveTexture" id="CurveTexture_xtguu"]
+curve = SubResource("Curve_lwtfs")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_x4grp"]
+gravity = Vector3(0, 0, 0)
+scale_min = 6.0
+scale_max = 6.0
+scale_curve = SubResource("CurveTexture_xtguu")
+color = Color(1, 0.486275, 0.313726, 1)
+alpha_curve = SubResource("CurveTexture_uqkyf")
+
+[sub_resource type="QuadMesh" id="QuadMesh_lwtfs"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lwtfs"]
+transparency = 1
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_yhdc5")
+billboard_keep_scale = true
+
+[sub_resource type="Curve" id="Curve_83i62"]
+_data = [Vector2(0, 0.529429), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_bhkh8"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0.151613, 4.79694), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_qqjqj"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_n5bqa"]
+curve_x = SubResource("Curve_83i62")
+curve_y = SubResource("Curve_bhkh8")
+curve_z = SubResource("Curve_qqjqj")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4yt4n"]
+particle_flag_align_y = true
+spread = 180.0
+initial_velocity_min = 5.0
+initial_velocity_max = 25.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.05
+scale_max = 0.1
+scale_curve = SubResource("CurveXYZTexture_n5bqa")
+color = Color(1, 0.486275, 0.313726, 1)
+alpha_curve = SubResource("CurveTexture_uqkyf")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x4grp"]
+transparency = 1
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("2_xtguu")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_x4grp"]
+_data = [Vector2(0, 0.996174), 0.0, -0.996174, 0, 1, Vector2(1, 0), -0.996174, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_83i62"]
+curve = SubResource("Curve_x4grp")
+
+[sub_resource type="Curve" id="Curve_yhdc5"]
+_data = [Vector2(0, 0), 0.0, 1.21807, 0, 1, Vector2(0.820968, 1), 1.21807, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_lwtfs"]
+curve = SubResource("Curve_yhdc5")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_83i62"]
+gravity = Vector3(0, 0, 0)
+scale_min = 4.0
+scale_max = 6.0
+scale_curve = SubResource("CurveTexture_lwtfs")
+color = Color(1, 0.365566, 0.202254, 1)
+alpha_curve = SubResource("CurveTexture_83i62")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xwisn"]
+transparency = 1
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("3_uqkyf")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rwmre"]
+gravity = Vector3(0, 0, 0)
+scale_min = 3.5
+scale_max = 4.0
+scale_curve = SubResource("CurveTexture_lwtfs")
+color = Color(1, 0.365566, 0.202254, 1)
+alpha_curve = SubResource("CurveTexture_83i62")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_lwtfs"]
+radius = 1.0
+
+[node name="VfxImpact" type="Area3D"]
+script = ExtResource("1_x4grp")
+
+[node name="Flash" type="GPUParticles3D" parent="."]
+material_override = SubResource("StandardMaterial3D_uqkyf")
+emitting = false
+amount = 1
+lifetime = 0.1
+one_shot = true
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_x4grp")
+draw_pass_1 = SubResource("QuadMesh_lwtfs")
+
+[node name="Sparks" type="GPUParticles3D" parent="."]
+material_override = SubResource("StandardMaterial3D_lwtfs")
+amount = 20
+lifetime = 0.5
+explosiveness = 1.0
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_4yt4n")
+draw_pass_1 = SubResource("QuadMesh_lwtfs")
+
+[node name="Flare" type="GPUParticles3D" parent="."]
+material_override = SubResource("StandardMaterial3D_x4grp")
+emitting = false
+amount = 1
+lifetime = 0.2
+one_shot = true
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_83i62")
+draw_pass_1 = SubResource("QuadMesh_lwtfs")
+
+[node name="Shockwave" type="GPUParticles3D" parent="."]
+material_override = SubResource("StandardMaterial3D_xwisn")
+emitting = false
+amount = 1
+lifetime = 0.4
+one_shot = true
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_rwmre")
+draw_pass_1 = SubResource("QuadMesh_lwtfs")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_lwtfs")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="finished" from="Shockwave" to="." method="_on_shockwave_finished"]
