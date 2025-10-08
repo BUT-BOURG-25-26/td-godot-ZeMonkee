@@ -16,6 +16,11 @@ size = Vector3(1.16946, 1.70804, 0.865845)
 
 [node name="Ennemy" type="CharacterBody3D"]
 script = ExtResource("1_rsyu2")
+health = null
+speed = null
+attack_damage = null
+can_attack = null
+player_in_range = null
 
 [node name="Model" parent="." instance=ExtResource("1_7waic")]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)

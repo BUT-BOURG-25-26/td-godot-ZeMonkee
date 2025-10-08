@@ -1,9 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://fua8s1a0v0jh"]
+[gd_scene load_steps=10 format=3 uid="uid://fua8s1a0v0jh"]
 
 [ext_resource type="Script" uid="uid://c158lkig23rww" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="PackedScene" uid="uid://be0cg27v8u83p" path="res://assets/player/model.gltf" id="2_g2els"]
 [ext_resource type="Script" uid="uid://cbf445qaxvj2t" path="res://scripts/camera_player.gd" id="3_qhqgy"]
 [ext_resource type="Script" uid="uid://q0170wtblc0x" path="res://scripts/camera_follow.gd" id="4_dqkch"]
+[ext_resource type="PackedScene" uid="uid://w1bno8quod6p" path="res://scenes/player_ui.tscn" id="5_qlg0r"]
+[ext_resource type="PackedScene" uid="uid://cfst4hcqq7a7h" path="res://scenes/death_screen.tscn" id="6_tuyoq"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3vyb7"]
 radius = 0.460789
@@ -13,7 +15,7 @@ height = 1.61302
 radius = 0.3
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dqkch"]
-size = Vector3(1.9939, 1.60034, 2.99945)
+size = Vector3(1.9939, 1.60034, 1.98459)
 
 [node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("camera")]
 script = ExtResource("1_g2els")
@@ -42,8 +44,12 @@ spring_arm = NodePath("../SpringArm3D/SpringPosition")
 [node name="AttackRange" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AttackRange"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00622559, 0.796166, -1.50406)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00622559, 0.796166, -0.996629)
 shape = SubResource("BoxShape3D_dqkch")
+
+[node name="Player_ui" parent="." instance=ExtResource("5_qlg0r")]
+
+[node name="DeathScreen" parent="." instance=ExtResource("6_tuyoq")]
 
 [connection signal="body_entered" from="AttackRange" to="." method="_add_attack_list"]
 [connection signal="body_exited" from="AttackRange" to="." method="_remove_attack_list"]

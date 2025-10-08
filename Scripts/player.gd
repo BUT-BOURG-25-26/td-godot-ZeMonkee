@@ -4,13 +4,17 @@ extends CharacterBody3D
 @export var speed: float = 5.0
 @export var jump_force: float = 5.0
 @export var camera: Camera3D
+@export var attack_damage: float = 20.0
+@export var health: float = 100.0
 
+@onready var health_bar = $Player_ui
 @onready var model = $Model
 @onready var attack_range = $AttackRange
+@onready var death_screen = $DeathScreen
 
 var attack_range_list = []
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	attack_input()
 
 func _physics_process(delta: float) -> void:
@@ -47,7 +51,7 @@ func read_move_input() -> Vector3:
 func attack_input():
 	if Input.is_action_just_pressed("attack"):
 		for ennemy in attack_range_list:
-			ennemy.call("damage")
+			ennemy.call("take_damage", attack_damage)
 		
 
 func _add_attack_list(body: Node3D) -> void:
@@ -58,3 +62,19 @@ func _add_attack_list(body: Node3D) -> void:
 func _remove_attack_list(body: Node3D) -> void:
 	if("Ennemy" in body.name):
 		attack_range_list.erase(body)
+		
+func take_damage(damage: float):
+	if(health > 0):
+		health -= damage
+		health_bar.take_damage(damage)
+		if(health <= 0):
+			die()
+		
+func die():
+	set_process(false)
+	set_physics_process(false)
+	model.hide()
+	death_screen.call("show_death_screen")
+	
+	
+	
