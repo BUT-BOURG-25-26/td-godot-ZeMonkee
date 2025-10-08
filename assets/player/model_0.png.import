@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://lyam3tctdn7w"
-path.s3tc="res://.godot/imported/Flare.png-265067692d09194bac2439fc95fb54d1.s3tc.ctex"
+uid="uid://drtpob72gq8o4"
+path.s3tc="res://.godot/imported/model_0.png-6b01485e374966815bba3cec3cc58871.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "a2bc40c91116631523b15734c21ec2eb"
+}
 
 [deps]
 
-source_file="res://Textures/Flare.png"
-dest_files=["res://.godot/imported/Flare.png-265067692d09194bac2439fc95fb54d1.s3tc.ctex"]
+source_file="res://assets/player/model_0.png"
+dest_files=["res://.godot/imported/model_0.png-6b01485e374966815bba3cec3cc58871.s3tc.ctex"]
 
 [params]
 

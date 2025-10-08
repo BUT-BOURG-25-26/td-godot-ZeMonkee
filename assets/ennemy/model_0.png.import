@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://xvnqu0h564ao"
-path.s3tc="res://.godot/imported/Shockwave.png-5d314fff72fb2b139d6da2469b5eb3e9.s3tc.ctex"
+uid="uid://bf64tlcrbdys4"
+path.s3tc="res://.godot/imported/model_0.png-09d27217ac2a1152b7a1476c8bfc128d.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "cf85e21938659dde5637f633f5c49482"
+}
 
 [deps]
 
-source_file="res://Textures/Shockwave.png"
-dest_files=["res://.godot/imported/Shockwave.png-5d314fff72fb2b139d6da2469b5eb3e9.s3tc.ctex"]
+source_file="res://assets/ennemy/model_0.png"
+dest_files=["res://.godot/imported/model_0.png-09d27217ac2a1152b7a1476c8bfc128d.s3tc.ctex"]
 
 [params]
 
