@@ -1,37 +1,30 @@
 [gd_scene load_steps=5 format=3 uid="uid://cah6t30iwknhn"]
 
-[ext_resource type="Material" uid="uid://2mec3dyrgl4y" path="res://material/m_map.tres" id="1_pw63i"]
-[ext_resource type="PackedScene" uid="uid://fua8s1a0v0jh" path="res://scenes/player.tscn" id="1_w2twt"]
+[ext_resource type="PackedScene" uid="uid://fua8s1a0v0jh" path="res://Scenes/player.tscn" id="1_w2twt"]
 [ext_resource type="Environment" uid="uid://jug2x30iocle" path="res://environment.tres" id="3_7ykc4"]
-[ext_resource type="PackedScene" uid="uid://dqi6v1mhurwxd" path="res://scenes/ennemy.tscn" id="4_pu3yx"]
+[ext_resource type="PackedScene" uid="uid://sdljk1v1kw5n" path="res://Scenes/map.tscn" id="3_jv6wh"]
+[ext_resource type="PackedScene" uid="uid://dqi6v1mhurwxd" path="res://Scenes/ennemy.tscn" id="4_pu3yx"]
 
 [node name="MainScene" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("1_w2twt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.240092, 2.06241, 0.674723)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.37622, 15.13, 49.4056)
+floor_snap_length = 1.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -0.790262, 0.612769, 0, -0.612769, -0.790262, -0.906714, 4.85212, -3.34297)
+transform = Transform3D(1, 0, 0, 0, -0.0934655, 0.995623, 0, -0.995623, -0.0934654, -2.55528, 41.1952, -3.34297)
+light_color = Color(0.691357, 0.691357, 0.691357, 1)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("3_7ykc4")
 
-[node name="Ground" type="Node3D" parent="."]
-
-[node name="Map" type="CSGBox3D" parent="Ground"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0107355, -0.0347946, 0.00895977)
-material_override = ExtResource("1_pw63i")
-use_collision = true
-size = Vector3(20, 0.5, 20)
+[node name="Map" parent="." instance=ExtResource("3_jv6wh")]
 
 [node name="Ennemy" parent="." instance=ExtResource("4_pu3yx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.11388, 0.215206, 7.47986)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.739314, 9.73668, 26.3991)
 
 [node name="Ennemy2" parent="." instance=ExtResource("4_pu3yx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.73107, 0.215205, -7.73751)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.88753, 10.9657, 26.9782)
 
 [node name="Ennemy3" parent="." instance=ExtResource("4_pu3yx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.20301, 0.215206, -8.0458)
-
-[node name="Ennemy4" parent="." instance=ExtResource("4_pu3yx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.70759, 0.215205, 7.79054)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.74033, 14.771, 42.9684)

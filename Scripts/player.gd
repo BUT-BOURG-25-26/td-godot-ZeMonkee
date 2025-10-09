@@ -2,20 +2,21 @@ class_name Player
 extends CharacterBody3D
 
 @export var speed: float = 5.0
-@export var jump_force: float = 5.0
+@export var jump_force: float = 4.0
 @export var camera: Camera3D
 @export var attack_damage: float = 20.0
 @export var health: float = 100.0
+@export var can_attack: bool = true
 
 @onready var health_bar = $Player_ui
 @onready var model = $Model
 @onready var attack_range = $AttackRange
 @onready var death_screen = $DeathScreen
+@onready var animation_player = $Model/AnimationPlayer
+@onready var attack_cooldown = $AttackCooldown
+@onready var attack_sound = $AttackSound
 
 var attack_range_list = []
-
-func _process(_delta: float) -> void:
-	attack_input()
 
 func _physics_process(delta: float) -> void:
 	var move_inputs = read_move_input()
@@ -24,19 +25,31 @@ func _physics_process(delta: float) -> void:
 
 	velocity.x = direction.x * speed
 	velocity.z = direction.z * speed
-
-	# Gravité / saut
-	if is_on_floor():
-		if Input.is_action_just_pressed("jump"):
+	
+	# Comportement
+	if is_on_floor() and can_attack:
+		if Input.is_action_just_pressed("attack"):
+			animation_player.play("1H_Melee_Attack_Slice_Horizontal") # Attack animation
+			attack_input()
+		
+		elif Input.is_action_just_pressed("jump"):
+			animation_player.play("Jump_Idle") # Jump animation
 			velocity.y = jump_force
+		
+		elif velocity.x != 0 or velocity.z != 0:
+			animation_player.play("Running_A") # Walk animation
+		
+		else:
+			animation_player.play("Idle") # Idle animation
+	
 	else:
 		velocity.y += get_gravity().y * delta
-
+		
 	move_and_slide()
-
+	
 	# Tourner le modèle
 	if direction.length() > 0.01:
-		var target_rotation = atan2(-direction.x, -direction.z)
+		var target_rotation = atan2(direction.x, direction.z)
 		model.rotation.y = lerp_angle(model.rotation.y, target_rotation, delta * 10.0)
 		attack_range.rotation.y = lerp_angle(attack_range.rotation.y, target_rotation, delta * 10.0)
 
@@ -49,15 +62,16 @@ func read_move_input() -> Vector3:
 
 
 func attack_input():
-	if Input.is_action_just_pressed("attack"):
-		for ennemy in attack_range_list:
-			ennemy.call("take_damage", attack_damage)
-		
+	can_attack = false
+	speed = 0.0
+	attack_sound.play()
+	for ennemy in attack_range_list:
+		ennemy.call("take_damage", attack_damage)
+	attack_cooldown.start()
 
 func _add_attack_list(body: Node3D) -> void:
 	if("Ennemy" in body.name):
 		attack_range_list.append(body)
-
 
 func _remove_attack_list(body: Node3D) -> void:
 	if("Ennemy" in body.name):
@@ -73,8 +87,10 @@ func take_damage(damage: float):
 func die():
 	set_process(false)
 	set_physics_process(false)
-	model.hide()
+	animation_player.play("Death_B")
 	death_screen.call("show_death_screen")
 	
-	
-	
+
+func _attack_cooldown() -> void:
+	can_attack = true
+	speed = 5.0

@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://cfst4hcqq7a7h"]
+[gd_scene load_steps=4 format=3 uid="uid://cfst4hcqq7a7h"]
 
-[ext_resource type="Script" uid="uid://bukoctdkckx84" path="res://scenes/death_screen.gd" id="1_uyutr"]
+[ext_resource type="Script" uid="uid://bukoctdkckx84" path="res://Scripts/death_screen.gd" id="1_uyutr"]
+[ext_resource type="AudioStream" uid="uid://c5xmkw82nq5ak" path="res://assets/sound/Dead_Dark_Souls.mp3" id="2_rwas2"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_itto5"]
 font_size = 64
@@ -88,7 +89,11 @@ theme_override_font_sizes/font_size = 24
 text = "Restart"
 
 [node name="RestartCooldown" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 5.0
+
+[node name="DeadSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_rwas2")
+volume_db = -10.0
 
 [connection signal="pressed" from="ExitBtn" to="." method="_exit_btn_pressed"]
 [connection signal="pressed" from="RestartBtn" to="." method="_restart_btn_pressed"]

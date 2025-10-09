@@ -4,6 +4,7 @@ extends Node3D
 @onready var spring_arm := $SpringArm3D
 
 func _ready() -> void:
+	spring_arm.spring_length = 5
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 
