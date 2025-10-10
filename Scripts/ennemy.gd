@@ -6,6 +6,7 @@ extends CharacterBody3D
 @export var attack_damage: float = 10.0
 @export var can_attack: bool = true
 @export var player_in_range: bool = false
+@export var player_detected: bool = false
 
 @onready var player : Node3D = get_tree().get_root().get_node("MainScene/Player")
 @onready var model = $Model
@@ -16,6 +17,7 @@ extends CharacterBody3D
 @onready var dead_cooldown = $DeadCooldown
 @onready var hit_cooldown = $HitCooldown
 @onready var animation_player = $Model/AnimationPlayer
+@onready var detector = $Detector
 
 # Son
 @onready var attack_sound = $AttackSound
@@ -29,6 +31,10 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	if not player:
+		return
+		
+	if not player_detected:
+		animation_player.play("Idle_Combat") # Default animation
 		return
 	
 	# Direction vers le joueur
@@ -88,6 +94,10 @@ func _in_attack_range(body: Node3D) -> void:
 func _out_attack_range(body: Node3D) -> void:
 	if body == player:
 		player_in_range = false
+		
+func _detector_body(body: Node3D) -> void:
+	if body == player:
+		player_detected = true
 		
 func _attack_cooldown_timeout() -> void:
 	speed = 1.0

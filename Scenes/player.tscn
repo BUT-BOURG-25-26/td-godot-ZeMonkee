@@ -1,11 +1,11 @@
 [gd_scene load_steps=104 format=4 uid="uid://fua8s1a0v0jh"]
 
-[ext_resource type="Script" uid="uid://c158lkig23rww" path="res://Scripts/player.gd" id="1_g2els"]
+[ext_resource type="Script" uid="uid://c158lkig23rww" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://ba6euc36ovhfj" path="res://assets/player/Knight_knight_texture.png" id="2_x3wgy"]
-[ext_resource type="Script" uid="uid://cbf445qaxvj2t" path="res://Scripts/camera_player.gd" id="3_qhqgy"]
-[ext_resource type="Script" uid="uid://q0170wtblc0x" path="res://Scripts/camera_follow.gd" id="4_dqkch"]
-[ext_resource type="PackedScene" uid="uid://w1bno8quod6p" path="res://Scenes/player_ui.tscn" id="5_qlg0r"]
-[ext_resource type="PackedScene" uid="uid://cfst4hcqq7a7h" path="res://Scenes/death_screen.tscn" id="6_tuyoq"]
+[ext_resource type="Script" uid="uid://cbf445qaxvj2t" path="res://scripts/camera_player.gd" id="3_qhqgy"]
+[ext_resource type="Script" uid="uid://q0170wtblc0x" path="res://scripts/camera_follow.gd" id="4_dqkch"]
+[ext_resource type="PackedScene" uid="uid://w1bno8quod6p" path="res://scenes/player_ui.tscn" id="5_qlg0r"]
+[ext_resource type="PackedScene" uid="uid://cfst4hcqq7a7h" path="res://scenes/death_screen.tscn" id="6_tuyoq"]
 [ext_resource type="AudioStream" uid="uid://115jg11p3gsp" path="res://assets/sound/Whoosh.mp3" id="7_3smsa"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3vyb7"]
@@ -31480,7 +31480,7 @@ bones/49/rotation = Quaternion(-0.758253, -1.52737e-07, 0.651961, -1.11759e-08)
 bones/49/scale = Vector3(1, 1, 1)
 
 [node name="Badge_Shield" type="BoneAttachment3D" parent="Model/Rig/Skeleton3D"]
-transform = Transform3D(3.75229e-07, 0.262863, 0.964833, 0.999999, -2.9198e-06, 6.39644e-07, 3.12392e-06, 0.964833, -0.262863, 0.662643, 0.636705, -0.0430841)
+transform = Transform3D(3.17165e-07, 0.262865, 0.964832, 0.999999, -2.91981e-06, 1.47411e-06, 3.53697e-06, 0.964832, -0.262864, 0.662642, 0.636706, -0.0430842)
 bone_name = "Badge_Shield"
 bone_idx = 10
 
@@ -31489,7 +31489,7 @@ mesh = SubResource("ArrayMesh_opa1u")
 skeleton = NodePath("")
 
 [node name="1H_Sword" type="BoneAttachment3D" parent="Model/Rig/Skeleton3D"]
-transform = Transform3D(-4.09345e-07, -0.149894, 0.988701, 0.999999, -1.16402e-07, 8.9407e-08, 4.87279e-07, 0.988701, 0.149894, -0.496054, 0.64103, 0.139528)
+transform = Transform3D(1.09228e-07, -0.149894, 0.988702, 0.999999, -8.01856e-07, -1.19209e-06, 1.3502e-06, 0.988701, 0.149893, -0.496053, 0.64103, 0.139529)
 bone_name = "1H_Sword"
 bone_idx = 19
 
@@ -31498,7 +31498,7 @@ mesh = SubResource("ArrayMesh_cq8vr")
 skeleton = NodePath("")
 
 [node name="Knight_Helmet" type="BoneAttachment3D" parent="Model/Rig/Skeleton3D"]
-transform = Transform3D(0.99972, -1.40143e-09, 0.0236466, 1.39341e-09, 1, 3.55686e-10, -0.0236466, -3.22637e-10, 0.99972, 4.69869e-07, 1.20229, -1.19779e-07)
+transform = Transform3D(0.99972, -1.40145e-09, 0.0236468, 1.39343e-09, 1, 3.55687e-10, -0.0236468, -3.22638e-10, 0.99972, 4.69869e-07, 1.20229, -1.19779e-07)
 bone_name = "Knight_Helmet"
 bone_idx = 22
 
@@ -31507,7 +31507,7 @@ mesh = SubResource("ArrayMesh_avjlm")
 skeleton = NodePath("")
 
 [node name="Knight_Cape" type="BoneAttachment3D" parent="Model/Rig/Skeleton3D"]
-transform = Transform3D(0.996275, -5.14962e-09, 0.0862353, 5.13043e-09, 1, 4.44077e-10, -0.0862353, 1.88007e-15, 0.996275, -1.63023e-08, 1.20229, -1.40136e-07)
+transform = Transform3D(0.996275, -5.14962e-09, 0.0862354, 5.13044e-09, 1, 4.44078e-10, -0.0862354, 1.46374e-15, 0.996275, -1.63022e-08, 1.20229, -1.40136e-07)
 bone_name = "Knight_Cape"
 bone_idx = 23
 
