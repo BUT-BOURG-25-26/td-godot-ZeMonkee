@@ -7,6 +7,7 @@ extends CharacterBody3D
 @export var attack_damage: float = 20.0
 @export var health: float = 100.0
 @export var can_attack: bool = true
+@export var blocking: bool = false
 
 @onready var health_bar = $Player_ui
 @onready var model = $Model
@@ -31,6 +32,13 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_just_pressed("attack"):
 			animation_player.play("1H_Melee_Attack_Slice_Horizontal") # Attack animation
 			attack_input()
+		
+		elif Input.is_action_pressed("block"):
+			animation_player.play("Blocking")
+			blocking_input()
+		
+		elif Input.is_action_just_released("block"):
+			unblocking_input()
 		
 		elif Input.is_action_just_pressed("jump"):
 			animation_player.play("Jump_Idle") # Jump animation
@@ -68,6 +76,14 @@ func attack_input():
 	for ennemy in attack_range_list:
 		ennemy.call("take_damage", attack_damage)
 	attack_cooldown.start()
+	
+func blocking_input():
+	blocking = true
+	speed = 0.0
+
+func unblocking_input():
+	blocking = false
+	speed = 5.0
 
 func _add_attack_list(body: Node3D) -> void:
 	if("Ennemy" in body.name):
@@ -78,7 +94,7 @@ func _remove_attack_list(body: Node3D) -> void:
 		attack_range_list.erase(body)
 		
 func take_damage(damage: float):
-	if(health > 0):
+	if(health > 0) and not blocking:
 		health -= damage
 		health_bar.take_damage(damage)
 		if(health <= 0):

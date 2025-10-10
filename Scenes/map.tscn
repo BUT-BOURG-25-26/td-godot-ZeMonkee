@@ -205,7 +205,6 @@ transform = Transform3D(1, 0, 0, 0, 2.22045e-16, 1, 0, -1, 2.22045e-16, 0, 0, 0)
 
 [node name="Object_2" type="MeshInstance3D" parent="Sketchfab_Scene/Sketchfab_model/12_obj_cleaner"]
 mesh = SubResource("ArrayMesh_8oda5")
-skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Sketchfab_Scene/Sketchfab_model/12_obj_cleaner/Object_2"]
 
@@ -214,7 +213,6 @@ shape = SubResource("ConcavePolygonShape3D_ie368")
 
 [node name="Object_3" type="MeshInstance3D" parent="Sketchfab_Scene/Sketchfab_model/12_obj_cleaner"]
 mesh = SubResource("ArrayMesh_73bqj")
-skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Sketchfab_Scene/Sketchfab_model/12_obj_cleaner/Object_3"]
 
@@ -223,7 +221,6 @@ shape = SubResource("ConcavePolygonShape3D_x5dfk")
 
 [node name="Object_4" type="MeshInstance3D" parent="Sketchfab_Scene/Sketchfab_model/12_obj_cleaner"]
 mesh = SubResource("ArrayMesh_0ogpj")
-skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Sketchfab_Scene/Sketchfab_model/12_obj_cleaner/Object_4"]
 
@@ -232,9 +229,44 @@ shape = SubResource("ConcavePolygonShape3D_fls3e")
 
 [node name="Object_5" type="MeshInstance3D" parent="Sketchfab_Scene/Sketchfab_model/12_obj_cleaner"]
 mesh = SubResource("ArrayMesh_ht64t")
-skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Sketchfab_Scene/Sketchfab_model/12_obj_cleaner/Object_5"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Sketchfab_Scene/Sketchfab_model/12_obj_cleaner/Object_5/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_k63oc")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(0.666667, 0, 0, 0, 0.666667, 0, 0, 0, 0.666667, -5.79653, 11.992, 26.9103)
+light_color = Color(0.117647, 0.862745, 1, 1)
+light_energy = 10.0
+omni_range = 10.0
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="."]
+transform = Transform3D(0.666667, 0, 0, 0, 0.666667, 0, 0, 0, 0.666667, -7.37287, 12.0155, 26.8425)
+light_color = Color(0.117647, 0.862745, 1, 1)
+light_energy = 10.0
+omni_range = 10.0
+
+[node name="OmniLight3D5" type="OmniLight3D" parent="."]
+transform = Transform3D(0.666667, 0, 0, 0, 0.666667, 0, 0, 0, 0.666667, 3.79562, 8.95405, 16.2291)
+light_color = Color(0.117647, 0.862745, 1, 1)
+light_energy = 10.0
+omni_range = 10.0
+
+[node name="OmniLight3D6" type="OmniLight3D" parent="."]
+transform = Transform3D(0.666667, 0, 0, 0, 0.666667, 0, 0, 0, 0.666667, 0.164667, 9.1824, 12.3593)
+light_color = Color(0.117647, 0.862745, 1, 1)
+light_energy = 10.0
+omni_range = 10.0
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="."]
+transform = Transform3D(0.666667, 0, 0, 0, 0.666667, 0, 0, 0, 0.666667, -3.48237, 7.53976, 19.0672)
+light_color = Color(0.117647, 0.862745, 1, 1)
+light_energy = 15.0
+omni_range = 20.0
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="."]
+transform = Transform3D(0.666667, 0, 0, 0, 0.666667, 0, 0, 0, 0.666667, -0.393503, 7.53976, 21.9811)
+light_color = Color(0.117647, 0.862745, 1, 1)
+light_energy = 15.0
+omni_range = 20.0

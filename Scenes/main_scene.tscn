@@ -14,6 +14,7 @@ floor_snap_length = 1.0
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.0934655, 0.995623, 0, -0.995623, -0.0934654, -2.55528, 41.1952, -3.34297)
 light_color = Color(0.691357, 0.691357, 0.691357, 1)
+light_energy = 0.5
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("3_7ykc4")

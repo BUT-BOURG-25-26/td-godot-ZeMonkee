@@ -18,6 +18,7 @@ extends CharacterBody3D
 @onready var hit_cooldown = $HitCooldown
 @onready var animation_player = $Model/AnimationPlayer
 @onready var detector = $Detector
+@onready var eyes_light = $Model/SpotLight3D
 
 # Son
 @onready var attack_sound = $AttackSound
@@ -111,6 +112,7 @@ func die():
 	set_process(false)
 	set_physics_process(false)
 	collision.queue_free()
+	eyes_light.queue_free()
 	animation_player.play("Death_B")
 	death_sound.play()
 	dead_cooldown.start()
