@@ -1,24 +1,26 @@
-class_name Ennemy
+class_name Enemy
 extends CharacterBody3D
 
 @export var health: float = 100
 @export var speed: float = 1
 @export var attack_damage: float = 10.0
-@export var can_attack: bool = true
+@export var can_action: bool = true
 @export var player_in_range: bool = false
 @export var player_detected: bool = false
+@export var player : Node3D
 
-@onready var player : Node3D = get_tree().get_root().get_node("MainScene/Player")
 @onready var model = $Model
 @onready var collision = $CollisionShape3D
 @onready var attack_range = $AttackRange
-@onready var health_bar = $HealthBar
+@onready var enemy_ui = $EnemyUi
 @onready var attack_cooldown = $AttackCooldown
 @onready var dead_cooldown = $DeadCooldown
 @onready var hit_cooldown = $HitCooldown
+@onready var destroy_cooldown = $DestroyCooldown
 @onready var animation_player = $Model/AnimationPlayer
 @onready var detector = $Detector
 @onready var eyes_light = $Model/SpotLight3D
+@onready var death_particle = $DeathParticle
 
 # Son
 @onready var attack_sound = $AttackSound
@@ -28,7 +30,7 @@ extends CharacterBody3D
 @onready var hit_sound : Array[AudioStreamPlayer] = [$HitSound1, $HitSound2]
 
 func _ready() -> void:
-	health_bar.max_hp = health
+	enemy_ui.call("set_health_bar", health)
 
 func _physics_process(delta: float) -> void:
 	if not player:
@@ -47,8 +49,8 @@ func _physics_process(delta: float) -> void:
 	velocity.z = direction.z * speed
 	
 	# Comportement
-	if is_on_floor() and can_attack:
-		if player_in_range and can_attack:
+	if is_on_floor() and can_action:
+		if player_in_range:
 			attack()
 			animation_player.play("1H_Melee_Attack_Slice_Horizontal") # Attack animation
 		
@@ -72,10 +74,10 @@ func _physics_process(delta: float) -> void:
 		
 func take_damage(damage: float):
 	health -= damage
-	health_bar.take_damage(damage)
+	enemy_ui.take_damage(damage)
 	hit_sound[randi_range(0,1)].play()
 	animation_player.play("Hit_B")
-	can_attack = false
+	can_action = false
 	speed = 0.0
 	hit_cooldown.start()
 	if(health<=0):
@@ -85,7 +87,7 @@ func attack():
 	speed = 0.0
 	attack_sound.play()
 	player.call("take_damage", attack_damage)
-	can_attack = false
+	can_action = false
 	attack_cooldown.start()
 
 func _in_attack_range(body: Node3D) -> void:
@@ -102,15 +104,17 @@ func _detector_body(body: Node3D) -> void:
 		
 func _attack_cooldown_timeout() -> void:
 	speed = 1.0
-	can_attack = true;
+	can_action = true;
 
 func _hit_cooldown() -> void:
 	speed = 1.0
-	can_attack = true;
+	can_action = true;
 
 func die():
 	set_process(false)
 	set_physics_process(false)
+	player.call("add_kill")
+	death_particle.emitting = true
 	collision.queue_free()
 	eyes_light.queue_free()
 	animation_player.play("Death_B")
@@ -118,4 +122,11 @@ func die():
 	dead_cooldown.start()
 
 func _dead_cooldown() -> void:
+	model.hide()
+	enemy_ui.hide()
+	death_particle.emitting = false
+	destroy_cooldown.start()
+
+
+func _destroy_cooldown() -> void:
 	queue_free()

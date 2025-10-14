@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://gqcs03kvmtw"]
+[gd_scene load_steps=7 format=3 uid="uid://gqcs03kvmtw"]
 
-[ext_resource type="Script" uid="uid://85exsixig13c" path="res://Scripts/health_bar.gd" id="1_1bvlm"]
+[ext_resource type="Script" uid="uid://cj1pdjp8ywqap" path="res://scripts/ennemy_ui.gd" id="1_k0frx"]
+[ext_resource type="FontFile" uid="uid://cw5nt2fri6pui" path="res://assets/fonts/PressStart2P-Regular.ttf" id="2_txhmy"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_tuyoq"]
 viewport_path = NodePath("SubViewport")
@@ -26,10 +27,11 @@ corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
-[node name="HealthBar" type="Sprite3D"]
+[node name="EnemyUi" type="Sprite3D" node_paths=PackedStringArray("health_bar")]
 billboard = 1
 texture = SubResource("ViewportTexture_tuyoq")
-script = ExtResource("1_1bvlm")
+script = ExtResource("1_k0frx")
+health_bar = NodePath("SubViewport/Panel/ProgressBar")
 
 [node name="SubViewport" type="SubViewport" parent="."]
 transparent_bg = true
@@ -56,6 +58,8 @@ offset_right = -0.0960083
 offset_bottom = 13.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_txhmy")
+theme_override_font_sizes/font_size = 14
 theme_override_styles/background = SubResource("StyleBoxFlat_dqkch")
 theme_override_styles/fill = SubResource("StyleBoxFlat_qlg0r")
 value = 100.0

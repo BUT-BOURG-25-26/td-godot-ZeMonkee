@@ -31483,7 +31483,7 @@ bones/49/rotation = Quaternion(-0.722065, 0.23145, 0.620846, 0.199006)
 bones/49/scale = Vector3(1, 1, 1)
 
 [node name="Badge_Shield" type="BoneAttachment3D" parent="Model/Rig/Skeleton3D"]
-transform = Transform3D(0.999972, -0.00095556, 0.00723983, 0.000799768, 0.999767, 0.0215504, -0.00725896, -0.0215441, 0.999741, 0.232238, 1.01887, 0.917408)
+transform = Transform3D(0.999972, -0.000955675, 0.00723995, 0.000799964, 0.999767, 0.0215504, -0.00725905, -0.0215441, 0.999741, 0.232238, 1.01887, 0.917408)
 bone_name = "Badge_Shield"
 bone_idx = 10
 
@@ -31492,7 +31492,7 @@ mesh = SubResource("ArrayMesh_opa1u")
 skeleton = NodePath("")
 
 [node name="1H_Sword" type="BoneAttachment3D" parent="Model/Rig/Skeleton3D"]
-transform = Transform3D(0.581347, -0.121962, 0.804462, 0.813654, 0.0871406, -0.57478, 1.91635e-07, 0.988701, 0.149893, -0.593199, 0.698958, 0.0212344)
+transform = Transform3D(0.581347, -0.121962, 0.804462, 0.813654, 0.0871403, -0.57478, 3.89075e-07, 0.988701, 0.149893, -0.593199, 0.698958, 0.0212343)
 bone_name = "1H_Sword"
 bone_idx = 19
 
@@ -31501,7 +31501,7 @@ mesh = SubResource("ArrayMesh_cq8vr")
 skeleton = NodePath("")
 
 [node name="Knight_Helmet" type="BoneAttachment3D" parent="Model/Rig/Skeleton3D"]
-transform = Transform3D(1, -2.23517e-08, -1.78814e-07, -1.49012e-08, 0.985778, -0.16805, 1.19209e-07, 0.16805, 0.985778, 4.62387e-07, 1.16101, 0.256379)
+transform = Transform3D(1, -2.98023e-08, -2.08616e-07, -1.49012e-08, 0.985778, -0.16805, 1.78814e-07, 0.16805, 0.985778, 4.59178e-07, 1.16101, 0.256379)
 bone_name = "Knight_Helmet"
 bone_idx = 22
 
@@ -31510,7 +31510,7 @@ mesh = SubResource("ArrayMesh_avjlm")
 skeleton = NodePath("")
 
 [node name="Knight_Cape" type="BoneAttachment3D" parent="Model/Rig/Skeleton3D"]
-transform = Transform3D(0.906307, -5.58794e-08, -0.422619, -0.140415, 0.943192, -0.301119, 0.398611, 0.332249, 0.854822, 4.58522e-08, 1.1621, 0.252186)
+transform = Transform3D(0.906307, -6.33299e-08, -0.422619, -0.140415, 0.943192, -0.301119, 0.398611, 0.332249, 0.854822, 4.26428e-08, 1.1621, 0.252186)
 bone_name = "Knight_Cape"
 bone_idx = 23
 
@@ -31567,7 +31567,7 @@ spring_arm = NodePath("../SpringArm3D/SpringPosition")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00622559, 0.998071, 1.00444)
 shape = SubResource("BoxShape3D_dqkch")
 
-[node name="Player_ui" parent="." instance=ExtResource("5_qlg0r")]
+[node name="PlayerUi" parent="." instance=ExtResource("5_qlg0r")]
 
 [node name="DeathScreen" parent="." instance=ExtResource("6_tuyoq")]
 

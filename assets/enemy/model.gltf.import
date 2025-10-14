@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://d1qpdj4rsnnw1"
-path="res://.godot/imported/Skeleton_Minion.glb-a2382293de767acad6632a12ac89de18.scn"
+uid="uid://bvcxp0cvqvgra"
+path="res://.godot/imported/model.gltf-55ecc6d42acb63f8a8c4479590194f5f.scn"
 
 [deps]
 
-source_file="res://assets/ennemy/Skeleton_Minion.glb"
-dest_files=["res://.godot/imported/Skeleton_Minion.glb-a2382293de767acad6632a12ac89de18.scn"]
+source_file="res://assets/enemy/model.gltf"
+dest_files=["res://.godot/imported/model.gltf-55ecc6d42acb63f8a8c4479590194f5f.scn"]
 
 [params]
 

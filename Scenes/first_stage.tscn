@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://cah6t30iwknhn"]
+
+[ext_resource type="PackedScene" uid="uid://fua8s1a0v0jh" path="res://scenes/player.tscn" id="1_8yko7"]
+[ext_resource type="Environment" uid="uid://jug2x30iocle" path="res://environment.tres" id="2_5iqor"]
+[ext_resource type="PackedScene" uid="uid://sdljk1v1kw5n" path="res://scenes/map.tscn" id="3_vaw80"]
+[ext_resource type="PackedScene" uid="uid://dqi6v1mhurwxd" path="res://scenes/enemy.tscn" id="4_p8kyg"]
+
+[node name="FirstStage" type="Node3D"]
+
+[node name="Player" parent="." instance=ExtResource("1_8yko7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.37622, 15.13, 49.4056)
+floor_snap_length = 1.0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.0934655, 0.995623, 0, -0.995623, -0.0934654, -2.55528, 41.1952, -3.34297)
+light_color = Color(0.691357, 0.691357, 0.691357, 1)
+light_energy = 0.5
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("2_5iqor")
+
+[node name="Map" parent="." instance=ExtResource("3_vaw80")]
+
+[node name="Enemy" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_p8kyg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.739314, 9.73668, 26.3991)
+player = NodePath("../Player")
+
+[node name="Enemy2" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_p8kyg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.88753, 10.9657, 26.9782)
+player = NodePath("../Player")
+
+[node name="Enemy3" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_p8kyg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.74033, 14.771, 42.9684)
+player = NodePath("../Player")

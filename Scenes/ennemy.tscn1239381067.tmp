@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c48k7o5xfy1nd" path="res://scripts/ennemy.gd" id="1_rsyu2"]
 [ext_resource type="Texture2D" uid="uid://t4qa0f7cyuqk" path="res://assets/ennemy/Skeleton_Minion_skeleton_texture.png" id="2_1b0bn"]
-[ext_resource type="PackedScene" uid="uid://gqcs03kvmtw" path="res://scenes/health_bar.tscn" id="2_614tr"]
+[ext_resource type="PackedScene" uid="uid://gqcs03kvmtw" path="res://scenes/ennemy_ui.tscn" id="2_614tr"]
 [ext_resource type="AudioStream" uid="uid://cmk501igpjn0l" path="res://assets/sound/Skeleton Bone Hit.mp3" id="4_1ic66"]
 [ext_resource type="AudioStream" uid="uid://d13x5hu2ao4e6" path="res://assets/sound/Skeleton Sword Hit Bones.mp3" id="5_q36x5"]
 [ext_resource type="AudioStream" uid="uid://dkwnsfscx2rmb" path="res://assets/sound/Skeleton Death.mp3" id="6_nynkr"]
@@ -70326,7 +70326,7 @@ spot_attenuation = 0.0
 spot_angle = 30.0
 spot_angle_attenuation = 3.24901
 
-[node name="HealthBar" parent="." instance=ExtResource("2_614tr")]
+[node name="Ennemy_ui" parent="." instance=ExtResource("2_614tr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.11097, 0)
 texture = SubResource("ViewportTexture_rsyu2")
 

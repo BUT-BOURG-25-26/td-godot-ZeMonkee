@@ -6,10 +6,11 @@ extends CharacterBody3D
 @export var camera: Camera3D
 @export var attack_damage: float = 20.0
 @export var health: float = 100.0
-@export var can_attack: bool = true
+@export var can_action: bool = true
 @export var blocking: bool = false
+@export var kill: int = 0
 
-@onready var health_bar = $Player_ui
+@onready var player_ui = $PlayerUi
 @onready var model = $Model
 @onready var attack_range = $AttackRange
 @onready var death_screen = $DeathScreen
@@ -18,6 +19,9 @@ extends CharacterBody3D
 @onready var attack_sound = $AttackSound
 
 var attack_range_list = []
+
+func _ready() -> void:
+	player_ui.call("set_health_bar", health)
 
 func _physics_process(delta: float) -> void:
 	var move_inputs = read_move_input()
@@ -28,7 +32,7 @@ func _physics_process(delta: float) -> void:
 	velocity.z = direction.z * speed
 	
 	# Comportement
-	if is_on_floor() and can_attack:
+	if is_on_floor() and can_action:
 		if Input.is_action_just_pressed("attack"):
 			animation_player.play("1H_Melee_Attack_Slice_Horizontal") # Attack animation
 			attack_input()
@@ -70,11 +74,11 @@ func read_move_input() -> Vector3:
 
 
 func attack_input():
-	can_attack = false
+	can_action = false
 	speed = 0.0
 	attack_sound.play()
-	for ennemy in attack_range_list:
-		ennemy.call("take_damage", attack_damage)
+	for enemy in attack_range_list:
+		enemy.call("take_damage", attack_damage)
 	attack_cooldown.start()
 	
 func blocking_input():
@@ -86,17 +90,17 @@ func unblocking_input():
 	speed = 5.0
 
 func _add_attack_list(body: Node3D) -> void:
-	if("Ennemy" in body.name):
+	if("Enemy" in body.name):
 		attack_range_list.append(body)
 
 func _remove_attack_list(body: Node3D) -> void:
-	if("Ennemy" in body.name):
+	if("Enemy" in body.name):
 		attack_range_list.erase(body)
 		
 func take_damage(damage: float):
 	if(health > 0) and not blocking:
 		health -= damage
-		health_bar.take_damage(damage)
+		player_ui.take_damage(damage)
 		if(health <= 0):
 			die()
 		
@@ -108,5 +112,9 @@ func die():
 	
 
 func _attack_cooldown() -> void:
-	can_attack = true
+	can_action = true
 	speed = 5.0
+	
+func add_kill():
+	kill += 1
+	player_ui.call("set_kill_counter", kill)
