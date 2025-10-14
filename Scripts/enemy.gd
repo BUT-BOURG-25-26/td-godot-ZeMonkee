@@ -7,8 +7,8 @@ extends CharacterBody3D
 @export var can_action: bool = true
 @export var player_in_range: bool = false
 @export var player_detected: bool = false
-@export var player : Node3D
 
+@onready var player: Node3D = get_tree().get_root().get_node("FirstStage/Player")
 @onready var model = $Model
 @onready var collision = $CollisionShape3D
 @onready var attack_range = $AttackRange
@@ -17,7 +17,6 @@ extends CharacterBody3D
 @onready var dead_cooldown = $DeadCooldown
 @onready var hit_cooldown = $HitCooldown
 @onready var destroy_cooldown = $DestroyCooldown
-@onready var animation_player = $Model/AnimationPlayer
 @onready var detector = $Detector
 @onready var eyes_light = $Model/SpotLight3D
 @onready var death_particle = $DeathParticle
@@ -29,6 +28,9 @@ extends CharacterBody3D
 @onready var death_sound = $DeathSound
 @onready var hit_sound : Array[AudioStreamPlayer] = [$HitSound1, $HitSound2]
 
+@onready var anim_tree = $Model/AnimationTree
+@onready var anim_state = anim_tree.get("parameters/playback")
+
 func _ready() -> void:
 	enemy_ui.call("set_health_bar", health)
 
@@ -37,7 +39,7 @@ func _physics_process(delta: float) -> void:
 		return
 		
 	if not player_detected:
-		animation_player.play("Idle_Combat") # Default animation
+		anim_state.travel("Idle_Combat") # Default animation
 		return
 	
 	# Direction vers le joueur
@@ -52,13 +54,13 @@ func _physics_process(delta: float) -> void:
 	if is_on_floor() and can_action:
 		if player_in_range:
 			attack()
-			animation_player.play("1H_Melee_Attack_Slice_Horizontal") # Attack animation
+			anim_state.travel("1H_Melee_Attack_Slice_Horizontal") # Attack animation
 		
 		elif velocity.x != 0 or velocity.z != 0:
-			animation_player.play("Walking_D_Skeletons") # Walk animation
+			anim_state.travel("Walking_D_Skeletons") # Walk animation
 		
 		else:
-			animation_player.play("Idle") # Idle animation
+			anim_state.travel("Idle_Combat") # Idle animation
 	
 	else:
 		velocity.y += get_gravity().y * delta
@@ -76,7 +78,7 @@ func take_damage(damage: float):
 	health -= damage
 	enemy_ui.take_damage(damage)
 	hit_sound[randi_range(0,1)].play()
-	animation_player.play("Hit_B")
+	anim_state.travel("Hit_B")
 	can_action = false
 	speed = 0.0
 	hit_cooldown.start()
@@ -117,7 +119,7 @@ func die():
 	death_particle.emitting = true
 	collision.queue_free()
 	eyes_light.queue_free()
-	animation_player.play("Death_B")
+	anim_state.travel("Death_B")
 	death_sound.play()
 	dead_cooldown.start()
 

@@ -235,38 +235,134 @@ mesh = SubResource("ArrayMesh_ht64t")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Sketchfab_Scene/Sketchfab_model/12_obj_cleaner/Object_5/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_k63oc")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(0.666667, 0, 0, 0, 0.666667, 0, 0, 0, 0.666667, -5.79653, 11.992, 26.9103)
-light_color = Color(0.117647, 0.862745, 1, 1)
-light_energy = 10.0
-omni_range = 10.0
+[node name="Pillier" type="Node3D" parent="."]
 
-[node name="OmniLight3D2" type="OmniLight3D" parent="."]
-transform = Transform3D(0.666667, 0, 0, 0, 0.666667, 0, 0, 0, 0.666667, -7.37287, 12.0155, 26.8425)
+[node name="OmniLight3D7" type="OmniLight3D" parent="Pillier"]
+transform = Transform3D(0.666667, 0, 0, 0, 0.666667, 0, 0, 0, 0.666667, -6.14078, 10.8779, 0.550026)
 light_color = Color(0.117647, 0.862745, 1, 1)
-light_energy = 10.0
-omni_range = 10.0
+light_energy = 12.0
+omni_range = 12.0
 
-[node name="OmniLight3D5" type="OmniLight3D" parent="."]
-transform = Transform3D(0.666667, 0, 0, 0, 0.666667, 0, 0, 0, 0.666667, 3.79562, 8.95405, 16.2291)
+[node name="OmniLight3D15" type="OmniLight3D" parent="Pillier"]
+transform = Transform3D(0.666667, 0, 0, 0, 0.666667, 0, 0, 0, 0.666667, 6.61138, 10.3689, 30.0187)
 light_color = Color(0.117647, 0.862745, 1, 1)
-light_energy = 10.0
-omni_range = 10.0
+light_energy = 12.0
+omni_range = 12.0
 
-[node name="OmniLight3D6" type="OmniLight3D" parent="."]
-transform = Transform3D(0.666667, 0, 0, 0, 0.666667, 0, 0, 0, 0.666667, 0.164667, 9.1824, 12.3593)
+[node name="OmniLight3D8" type="OmniLight3D" parent="Pillier"]
+transform = Transform3D(0.666667, 0, 0, 0, 0.666667, 0, 0, 0, 0.666667, -9.28434, 11.1824, 0.550026)
 light_color = Color(0.117647, 0.862745, 1, 1)
-light_energy = 10.0
-omni_range = 10.0
+light_energy = 12.0
+omni_range = 12.0
 
-[node name="OmniLight3D3" type="OmniLight3D" parent="."]
+[node name="OmniLight3D9" type="OmniLight3D" parent="Pillier"]
+transform = Transform3D(0.666667, 0, 0, 0, 0.666667, 0, 0, 0, 0.666667, -7.46582, 10.3331, -2.83562)
+light_color = Color(0.117647, 0.862745, 1, 1)
+light_energy = 12.0
+omni_range = 12.0
+
+[node name="OmniLight3D10" type="OmniLight3D" parent="Pillier"]
+transform = Transform3D(0.666667, 0, 0, 0, 0.666667, 0, 0, 0, 0.666667, -3.93183, 10.2672, -3.53197)
+light_color = Color(0.117647, 0.862745, 1, 1)
+light_energy = 12.0
+omni_range = 12.0
+
+[node name="OmniLight3D11" type="OmniLight3D" parent="Pillier"]
+transform = Transform3D(0.666667, 0, 0, 0, 0.666667, 0, 0, 0, 0.666667, -1.28725, 10.1331, -6.103)
+light_color = Color(0.117647, 0.862745, 1, 1)
+light_energy = 12.0
+omni_range = 12.0
+
+[node name="OmniLight3D12" type="OmniLight3D" parent="Pillier"]
+transform = Transform3D(0.666667, 0, 0, 0, 0.666667, 0, 0, 0, 0.666667, -1.93029, 9.18569, -10.3604)
+light_color = Color(0.117647, 0.862745, 1, 1)
+light_energy = 12.0
+omni_range = 12.0
+
+[node name="OmniLight3D13" type="OmniLight3D" parent="Pillier"]
+transform = Transform3D(0.666667, 0, 0, 0, 0.666667, 0, 0, 0, 0.666667, -2.73898, 9.67407, -27.1766)
+light_color = Color(0.117647, 0.862745, 1, 1)
+light_energy = 12.0
+omni_range = 12.0
+
+[node name="OmniLight3D14" type="OmniLight3D" parent="Pillier"]
+transform = Transform3D(0.666667, 0, 0, 0, 0.666667, 0, 0, 0, 0.666667, -0.574195, 9.67407, -29.0846)
+light_color = Color(0.117647, 0.862745, 1, 1)
+light_energy = 12.0
+omni_range = 12.0
+
+[node name="Feu" type="Node3D" parent="."]
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="Feu"]
 transform = Transform3D(0.666667, 0, 0, 0, 0.666667, 0, 0, 0, 0.666667, -3.48237, 7.53976, 19.0672)
 light_color = Color(0.117647, 0.862745, 1, 1)
 light_energy = 15.0
 omni_range = 20.0
 
-[node name="OmniLight3D4" type="OmniLight3D" parent="."]
-transform = Transform3D(0.666667, 0, 0, 0, 0.666667, 0, 0, 0, 0.666667, -0.393503, 7.53976, 21.9811)
+[node name="OmniLight3D5" type="OmniLight3D" parent="Feu"]
+transform = Transform3D(0.666667, 0, 0, 0, 0.666667, 0, 0, 0, 0.666667, 2.02513, 8.8324, -12.264)
 light_color = Color(0.117647, 0.862745, 1, 1)
 light_energy = 15.0
 omni_range = 20.0
+
+[node name="OmniLight3D6" type="OmniLight3D" parent="Feu"]
+transform = Transform3D(0.666667, 0, 0, 0, 0.666667, 0, 0, 0, 0.666667, 2.26534, 10.7208, -12.264)
+light_color = Color(0.117647, 0.862745, 1, 1)
+light_energy = 15.0
+omni_range = 20.0
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="Feu"]
+transform = Transform3D(0.666667, 0, 0, 0, 0.666667, 0, 0, 0, 0.666667, -0.393503, 7.3319, 21.7986)
+light_color = Color(0.117647, 0.862745, 1, 1)
+light_energy = 15.0
+omni_range = 20.0
+
+[node name="Lanterne" type="Node3D" parent="."]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Lanterne"]
+transform = Transform3D(0.666667, 0, 0, 0, 0.666667, 0, 0, 0, 0.666667, -5.79653, 11.992, 26.9103)
+light_color = Color(0.117647, 0.862745, 1, 1)
+light_energy = 10.0
+omni_range = 10.0
+
+[node name="OmniLight3D7" type="OmniLight3D" parent="Lanterne"]
+transform = Transform3D(0.666667, 0, 0, 0, 0.666667, 0, 0, 0, 0.666667, -7.33987, 10.9123, 7.80369)
+light_color = Color(0.117647, 0.862745, 1, 1)
+light_energy = 10.0
+omni_range = 10.0
+
+[node name="OmniLight3D10" type="OmniLight3D" parent="Lanterne"]
+transform = Transform3D(0.666667, 0, 0, 0, 0.666667, 0, 0, 0, 0.666667, -9.56931, 8.84458, -10.6152)
+light_color = Color(0.117647, 0.862745, 1, 1)
+light_energy = 10.0
+omni_range = 10.0
+
+[node name="OmniLight3D8" type="OmniLight3D" parent="Lanterne"]
+transform = Transform3D(0.666667, 0, 0, 0, 0.666667, 0, 0, 0, 0.666667, -4.37346, 10.9155, 6.87829)
+light_color = Color(0.117647, 0.862745, 1, 1)
+light_energy = 10.0
+omni_range = 10.0
+
+[node name="OmniLight3D9" type="OmniLight3D" parent="Lanterne"]
+transform = Transform3D(0.666667, 0, 0, 0, 0.666667, 0, 0, 0, 0.666667, -5.60571, 8.83885, -12.5632)
+light_color = Color(0.117647, 0.862745, 1, 1)
+light_energy = 10.0
+omni_range = 10.0
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Lanterne"]
+transform = Transform3D(0.666667, 0, 0, 0, 0.666667, 0, 0, 0, 0.666667, -7.37287, 12.0155, 26.8425)
+light_color = Color(0.117647, 0.862745, 1, 1)
+light_energy = 10.0
+omni_range = 10.0
+
+[node name="OmniLight3D5" type="OmniLight3D" parent="Lanterne"]
+transform = Transform3D(0.666667, 0, 0, 0, 0.666667, 0, 0, 0, 0.666667, 3.79562, 8.95405, 16.2291)
+light_color = Color(0.117647, 0.862745, 1, 1)
+light_energy = 10.0
+omni_range = 10.0
+
+[node name="OmniLight3D6" type="OmniLight3D" parent="Lanterne"]
+transform = Transform3D(0.666667, 0, 0, 0, 0.666667, 0, 0, 0, 0.666667, 0.164667, 9.1824, 12.3593)
+light_color = Color(0.117647, 0.862745, 1, 1)
+light_energy = 10.0
+omni_range = 10.0

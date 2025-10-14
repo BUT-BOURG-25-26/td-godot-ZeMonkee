@@ -14,9 +14,12 @@ extends CharacterBody3D
 @onready var model = $Model
 @onready var attack_range = $AttackRange
 @onready var death_screen = $DeathScreen
-@onready var animation_player = $Model/AnimationPlayer
 @onready var attack_cooldown = $AttackCooldown
 @onready var attack_sound = $AttackSound
+@onready var joystick = $MobileUi/VirtualJoystick
+
+@onready var anim_tree = $Model/AnimationTree
+@onready var anim_state = anim_tree.get("parameters/playback")
 
 var attack_range_list = []
 
@@ -34,25 +37,25 @@ func _physics_process(delta: float) -> void:
 	# Comportement
 	if is_on_floor() and can_action:
 		if Input.is_action_just_pressed("attack"):
-			animation_player.play("1H_Melee_Attack_Slice_Horizontal") # Attack animation
+			anim_state.travel("1H_Melee_Attack_Slice_Horizontal") # Attack animation
 			attack_input()
 		
 		elif Input.is_action_pressed("block"):
-			animation_player.play("Blocking")
+			anim_state.travel("Blocking")
 			blocking_input()
 		
 		elif Input.is_action_just_released("block"):
 			unblocking_input()
 		
 		elif Input.is_action_just_pressed("jump"):
-			animation_player.play("Jump_Idle") # Jump animation
+			anim_state.travel("Jump_Idle") # Jump animation
 			velocity.y = jump_force
 		
 		elif velocity.x != 0 or velocity.z != 0:
-			animation_player.play("Running_A") # Walk animation
+			anim_state.travel("Running_A") # Walk animation
 		
 		else:
-			animation_player.play("Idle") # Idle animation
+			anim_state.travel("Idle") # Idle animation
 	
 	else:
 		velocity.y += get_gravity().y * delta
@@ -66,11 +69,19 @@ func _physics_process(delta: float) -> void:
 		attack_range.rotation.y = lerp_angle(attack_range.rotation.y, target_rotation, delta * 10.0)
 
 func read_move_input() -> Vector3:
-	var move_inputs: Vector3
-	move_inputs.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
-	move_inputs.z = Input.get_action_strength("move_backward") - Input.get_action_strength("move_forward")
-	move_inputs = move_inputs.normalized()
-	return move_inputs
+	var move_inputs: Vector3 = Vector3.ZERO
+	
+	# Mobile
+	if joystick and joystick.direction.length() > 0.1:
+		move_inputs.x = joystick.direction.x
+		move_inputs.z = joystick.direction.y
+	
+	# PC
+	else:
+		move_inputs.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
+		move_inputs.z = Input.get_action_strength("move_backward") - Input.get_action_strength("move_forward")
+	
+	return move_inputs.normalized()
 
 
 func attack_input():
@@ -107,7 +118,7 @@ func take_damage(damage: float):
 func die():
 	set_process(false)
 	set_physics_process(false)
-	animation_player.play("Death_B")
+	anim_state.travel("Death_B")
 	death_screen.call("show_death_screen")
 	
 
