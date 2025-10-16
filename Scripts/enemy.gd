@@ -14,6 +14,7 @@ extends CharacterBody3D
 @onready var attack_range = $AttackRange
 @onready var enemy_ui = $EnemyUi
 @onready var attack_cooldown = $AttackCooldown
+@onready var attack_delay = $AttackDelay
 @onready var dead_cooldown = $DeadCooldown
 @onready var hit_cooldown = $HitCooldown
 @onready var destroy_cooldown = $DestroyCooldown
@@ -53,8 +54,9 @@ func _physics_process(delta: float) -> void:
 	# Comportement
 	if is_on_floor() and can_action:
 		if player_in_range:
-			attack()
 			anim_state.travel("1H_Melee_Attack_Slice_Horizontal") # Attack animation
+			# Futur fixe, passé par l'animation IDLE
+			attack()
 		
 		elif velocity.x != 0 or velocity.z != 0:
 			anim_state.travel("Walking_D_Skeletons") # Walk animation
@@ -86,11 +88,19 @@ func take_damage(damage: float):
 		die()
 
 func attack():
-	speed = 0.0
-	attack_sound.play()
-	player.call("take_damage", attack_damage)
 	can_action = false
+	speed = 0.0
+	attack_delay.start()
+
+func _attack_delay() -> void:
+	attack_sound.play()
+	if(player_in_range):
+		player.call("take_damage", attack_damage)
 	attack_cooldown.start()
+
+func _attack_cooldown_timeout() -> void:
+	speed = 1.0
+	can_action = true;
 
 func _in_attack_range(body: Node3D) -> void:
 	if body == player:
@@ -103,10 +113,6 @@ func _out_attack_range(body: Node3D) -> void:
 func _detector_body(body: Node3D) -> void:
 	if body == player:
 		player_detected = true
-		
-func _attack_cooldown_timeout() -> void:
-	speed = 1.0
-	can_action = true;
 
 func _hit_cooldown() -> void:
 	speed = 1.0

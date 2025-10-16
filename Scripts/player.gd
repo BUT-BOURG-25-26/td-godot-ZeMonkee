@@ -15,6 +15,7 @@ extends CharacterBody3D
 @onready var attack_range = $AttackRange
 @onready var death_screen = $DeathScreen
 @onready var attack_cooldown = $AttackCooldown
+@onready var attack_delay = $AttackDelay
 @onready var attack_sound = $AttackSound
 @onready var joystick = $MobileUi/VirtualJoystick
 
@@ -87,11 +88,14 @@ func read_move_input() -> Vector3:
 func attack_input():
 	can_action = false
 	speed = 0.0
+	attack_delay.start()
+
+func _attack_delay() -> void:
 	attack_sound.play()
 	for enemy in attack_range_list:
 		enemy.call("take_damage", attack_damage)
 	attack_cooldown.start()
-	
+
 func blocking_input():
 	blocking = true
 	speed = 0.0

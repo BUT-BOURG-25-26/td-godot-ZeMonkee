@@ -70037,7 +70037,7 @@ states/Start/position = Vector2(41, 122)
 states/Walking_D_Skeletons/node = SubResource("AnimationNodeAnimation_w8i8w")
 states/Walking_D_Skeletons/position = Vector2(743, 41)
 transitions = ["Start", "Idle_Combat", SubResource("AnimationNodeStateMachineTransition_otmr2"), "Idle_Combat", "1H_Melee_Attack_Slice_Horizontal", SubResource("AnimationNodeStateMachineTransition_wtq4b"), "1H_Melee_Attack_Slice_Horizontal", "Idle_Combat", SubResource("AnimationNodeStateMachineTransition_j0cyh"), "Idle_Combat", "Hit_B", SubResource("AnimationNodeStateMachineTransition_g0wcc"), "Hit_B", "Idle_Combat", SubResource("AnimationNodeStateMachineTransition_s1ycm"), "Walking_D_Skeletons", "1H_Melee_Attack_Slice_Horizontal", SubResource("AnimationNodeStateMachineTransition_rogs8"), "1H_Melee_Attack_Slice_Horizontal", "Walking_D_Skeletons", SubResource("AnimationNodeStateMachineTransition_wrm80"), "Idle_Combat", "Walking_D_Skeletons", SubResource("AnimationNodeStateMachineTransition_nenq2"), "Walking_D_Skeletons", "Idle_Combat", SubResource("AnimationNodeStateMachineTransition_md484"), "Idle_Combat", "Death_B", SubResource("AnimationNodeStateMachineTransition_ipns3"), "Walking_D_Skeletons", "Hit_B", SubResource("AnimationNodeStateMachineTransition_w8i8w"), "Hit_B", "Walking_D_Skeletons", SubResource("AnimationNodeStateMachineTransition_6awcb"), "1H_Melee_Attack_Slice_Horizontal", "Hit_B", SubResource("AnimationNodeStateMachineTransition_2mchx"), "Hit_B", "1H_Melee_Attack_Slice_Horizontal", SubResource("AnimationNodeStateMachineTransition_t3vcr")]
-graph_offset = Vector2(-116, -74)
+graph_offset = Vector2(-79, 56)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_rsyu2"]
 viewport_path = NodePath("SubViewport")
@@ -70440,16 +70440,23 @@ texture = SubResource("ViewportTexture_rsyu2")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0169525, 0.865433, 0.435669)
 shape = SubResource("BoxShape3D_rsyu2")
 
+[node name="AttackDelay" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
 [node name="AttackCooldown" type="Timer" parent="."]
-wait_time = 1.5
+one_shot = true
 
 [node name="DeadCooldown" type="Timer" parent="."]
 wait_time = 3.0
+one_shot = true
 
 [node name="DestroyCooldown" type="Timer" parent="."]
+one_shot = true
 
 [node name="HitCooldown" type="Timer" parent="."]
 wait_time = 0.8
+one_shot = true
 
 [node name="AttackSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_1ic66")
@@ -70485,6 +70492,7 @@ draw_pass_1 = SubResource("SphereMesh_40eh0")
 
 [connection signal="body_entered" from="AttackRange" to="." method="_in_attack_range"]
 [connection signal="body_exited" from="AttackRange" to="." method="_out_attack_range"]
+[connection signal="timeout" from="AttackDelay" to="." method="_attack_delay"]
 [connection signal="timeout" from="AttackCooldown" to="." method="_attack_cooldown_timeout"]
 [connection signal="timeout" from="DeadCooldown" to="." method="_dead_cooldown"]
 [connection signal="timeout" from="DestroyCooldown" to="." method="_destroy_cooldown"]

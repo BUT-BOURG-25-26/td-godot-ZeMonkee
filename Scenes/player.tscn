@@ -31213,7 +31213,7 @@ states/Running_A/node = SubResource("AnimationNodeAnimation_ur7pv")
 states/Running_A/position = Vector2(595, 91)
 states/Start/position = Vector2(139, 128)
 transitions = ["Idle", "Jump_Idle", SubResource("AnimationNodeStateMachineTransition_smehm"), "Jump_Idle", "Idle", SubResource("AnimationNodeStateMachineTransition_ur7pv"), "Idle", "Running_A", SubResource("AnimationNodeStateMachineTransition_y4r1p"), "Running_A", "Idle", SubResource("AnimationNodeStateMachineTransition_d2wvv"), "Idle", "Blocking", SubResource("AnimationNodeStateMachineTransition_3v2ag"), "Blocking", "Idle", SubResource("AnimationNodeStateMachineTransition_jej6c"), "1H_Melee_Attack_Slice_Horizontal", "Idle", SubResource("AnimationNodeStateMachineTransition_f1ej7"), "Idle", "1H_Melee_Attack_Slice_Horizontal", SubResource("AnimationNodeStateMachineTransition_oprun"), "Start", "Idle", SubResource("AnimationNodeStateMachineTransition_a8ls1"), "Running_A", "1H_Melee_Attack_Slice_Horizontal", SubResource("AnimationNodeStateMachineTransition_qfm1y"), "1H_Melee_Attack_Slice_Horizontal", "Running_A", SubResource("AnimationNodeStateMachineTransition_fulsm"), "Running_A", "Jump_Idle", SubResource("AnimationNodeStateMachineTransition_4r5pv"), "Jump_Idle", "Running_A", SubResource("AnimationNodeStateMachineTransition_60mlk"), "Running_A", "Blocking", SubResource("AnimationNodeStateMachineTransition_i4ail"), "Blocking", "Running_A", SubResource("AnimationNodeStateMachineTransition_a38lo"), "Blocking", "1H_Melee_Attack_Slice_Horizontal", SubResource("AnimationNodeStateMachineTransition_4ni07"), "1H_Melee_Attack_Slice_Horizontal", "Blocking", SubResource("AnimationNodeStateMachineTransition_l71n6"), "Blocking", "Jump_Idle", SubResource("AnimationNodeStateMachineTransition_ke2ow"), "Jump_Idle", "Blocking", SubResource("AnimationNodeStateMachineTransition_ujl30"), "Jump_Idle", "1H_Melee_Attack_Slice_Horizontal", SubResource("AnimationNodeStateMachineTransition_31cv2"), "1H_Melee_Attack_Slice_Horizontal", "Jump_Idle", SubResource("AnimationNodeStateMachineTransition_pf23h"), "Idle", "Death_B", SubResource("AnimationNodeStateMachineTransition_dt7fs")]
-graph_offset = Vector2(-65.5539, 18.4719)
+graph_offset = Vector2(-80.5539, 90.4719)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_dqkch"]
 radius = 0.3
@@ -31681,7 +31681,8 @@ shape = SubResource("BoxShape3D_dqkch")
 [node name="DeathScreen" parent="." instance=ExtResource("6_tuyoq")]
 
 [node name="AttackCooldown" type="Timer" parent="."]
-wait_time = 0.8
+wait_time = 0.5
+one_shot = true
 
 [node name="AttackSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_3smsa")
@@ -31690,6 +31691,11 @@ pitch_scale = 0.9
 
 [node name="MobileUi" parent="." instance=ExtResource("8_smehm")]
 
+[node name="AttackDelay" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+
 [connection signal="body_entered" from="AttackRange" to="." method="_add_attack_list"]
 [connection signal="body_exited" from="AttackRange" to="." method="_remove_attack_list"]
 [connection signal="timeout" from="AttackCooldown" to="." method="_attack_cooldown"]
+[connection signal="timeout" from="AttackDelay" to="." method="_attack_delay"]
