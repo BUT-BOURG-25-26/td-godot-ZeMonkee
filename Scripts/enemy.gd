@@ -55,7 +55,6 @@ func _physics_process(delta: float) -> void:
 	if is_on_floor() and can_action:
 		if player_in_range:
 			anim_state.travel("1H_Melee_Attack_Slice_Horizontal") # Attack animation
-			# Futur fixe, passé par l'animation IDLE
 			attack()
 		
 		elif velocity.x != 0 or velocity.z != 0:

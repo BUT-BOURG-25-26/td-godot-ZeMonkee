@@ -1,13 +1,13 @@
 [gd_scene load_steps=135 format=4 uid="uid://fua8s1a0v0jh"]
 
-[ext_resource type="Script" uid="uid://c158lkig23rww" path="res://scripts/player.gd" id="1_g2els"]
+[ext_resource type="Script" uid="uid://c158lkig23rww" path="res://Scripts/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://ba6euc36ovhfj" path="res://assets/player/Knight_knight_texture.png" id="2_x3wgy"]
-[ext_resource type="Script" uid="uid://cbf445qaxvj2t" path="res://scripts/camera_player.gd" id="3_qhqgy"]
-[ext_resource type="Script" uid="uid://q0170wtblc0x" path="res://scripts/camera_follow.gd" id="4_dqkch"]
-[ext_resource type="PackedScene" uid="uid://w1bno8quod6p" path="res://scenes/player_ui.tscn" id="5_qlg0r"]
-[ext_resource type="PackedScene" uid="uid://cfst4hcqq7a7h" path="res://scenes/death_screen.tscn" id="6_tuyoq"]
+[ext_resource type="Script" uid="uid://cbf445qaxvj2t" path="res://Scripts/camera_player.gd" id="3_qhqgy"]
+[ext_resource type="Script" uid="uid://q0170wtblc0x" path="res://Scripts/camera_follow.gd" id="4_dqkch"]
+[ext_resource type="PackedScene" uid="uid://w1bno8quod6p" path="res://Scenes/player_ui.tscn" id="5_qlg0r"]
+[ext_resource type="PackedScene" uid="uid://cfst4hcqq7a7h" path="res://Scenes/death_screen.tscn" id="6_tuyoq"]
 [ext_resource type="AudioStream" uid="uid://115jg11p3gsp" path="res://assets/sound/Whoosh.mp3" id="7_3smsa"]
-[ext_resource type="PackedScene" uid="uid://bleyv8y4o831" path="res://scenes/mobile_ui.tscn" id="8_smehm"]
+[ext_resource type="PackedScene" uid="uid://bleyv8y4o831" path="res://Scenes/mobile_ui.tscn" id="8_smehm"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3vyb7"]
 radius = 0.419749

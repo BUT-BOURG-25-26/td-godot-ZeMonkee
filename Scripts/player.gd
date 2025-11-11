@@ -28,15 +28,17 @@ func _ready() -> void:
 	player_ui.call("set_health_bar", health)
 
 func _physics_process(delta: float) -> void:
-	var move_inputs = read_move_input()
-	var direction = (transform.basis * move_inputs).normalized()
-	direction = direction.rotated(Vector3.UP, camera.global_rotation.y)
-
-	velocity.x = direction.x * speed
-	velocity.z = direction.z * speed
+	var direction
 	
 	# Comportement
 	if is_on_floor() and can_action:
+		var move_inputs = read_move_input()
+		direction = (transform.basis * move_inputs).normalized()
+		direction = direction.rotated(Vector3.UP, camera.global_rotation.y)
+
+		velocity.x = direction.x * speed
+		velocity.z = direction.z * speed
+		
 		if Input.is_action_just_pressed("attack"):
 			anim_state.travel("1H_Melee_Attack_Slice_Horizontal") # Attack animation
 			attack_input()
@@ -58,9 +60,18 @@ func _physics_process(delta: float) -> void:
 		else:
 			anim_state.travel("Idle") # Idle animation
 	
+	elif is_on_floor() and not can_action:
+		# Bouge pas pendant une action
+		direction = Vector3.ZERO
+		velocity.x = 0
+		velocity.z = 0
+	
 	else:
+		# Tombe
+		direction = Vector3.ZERO
 		velocity.y += get_gravity().y * delta
-		
+	
+	# Déplacement
 	move_and_slide()
 	
 	# Tourner le modèle
